@@ -279,6 +279,16 @@ class Redis
     s
   end
 
+  # avoid sintata method_missing problems
+  def get(key)
+    call_command(['get', key])
+  end
+
+  # avoid sintata method_missing problems
+  def delete(key)
+    call_command(['del', key])
+  end
+
   def sort(key, options = {})
     cmd = ["SORT"]
     cmd << key
